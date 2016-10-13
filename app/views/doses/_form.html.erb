@@ -1,0 +1,24 @@
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <% if @dose.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dose.errors.count, "error") %> prohibited this dose from being saved:</h2>
+
+      <ul>
+      <% @dose.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.input :description %>
+  </div>
+  <div class="field">
+    <%= f.input :ingredient_id, as: :select, collection: Ingredient.all, prompt: "Select an ingredient" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add this dose", class: "btn btn-primary" %>
+  </div>
+<% end %>
