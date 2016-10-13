@@ -1,6 +1,6 @@
 class DosesController < ApplicationController
   before_action :set_dose, only: [:show, :edit, :update, :destroy]
-  before_action :set_cocktail, only: [:new, :create]
+  before_action :set_cocktail, only: [:new, :create, :destroy]
 
   def index
     @doses = Dose.all
@@ -39,10 +39,10 @@ class DosesController < ApplicationController
   end
 
   def destroy
+    @dose = Dose.find(params[:id])
     @dose.destroy
     respond_to do |format|
-      format.html { redirect_to doses_url, notice: 'Dose was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to @cocktail, notice: 'Dose was successfully destroyed.' }
     end
   end
 

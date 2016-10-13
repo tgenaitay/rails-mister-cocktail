@@ -15,7 +15,7 @@
     <%= f.input :description %>
   </div>
   <div class="field">
-    <%= f.input :ingredient_id, as: :select, collection: Ingredient.all, prompt: "Select an ingredient" %>
+    <%= f.input :ingredient_id, as: :select, collection: Ingredient.all.order(:name), prompt: "Select an ingredient" %>
   </div>
 
   <div class="actions">
