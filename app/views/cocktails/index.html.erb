@@ -1,12 +1,12 @@
 <%= render partial: "shared/header" %>
+<% if @cocktails.count > 0 %>
 <div class="container">
   <div class="page-header">
-  <h2 id="top">Best recipes selected by Mister cocktail</h2>
+  <h3 id="top">Best recipes selected by Mister cocktail</h3>
   </div>
 <br>
 <div class="row">
   <% @cocktails.each do |cocktail| %>
-</ul>
   <div class="col-xs-12 col-sm-4">
     <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('<%=cl_image_path cocktail.photo, width: 400, height: 200, crop: :fill %>');">
       <div class="card-category">Popular</div>
@@ -25,4 +25,4 @@
 <br>
 
 </div>
-</div>
+<% end %>
