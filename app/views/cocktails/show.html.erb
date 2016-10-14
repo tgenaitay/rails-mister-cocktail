@@ -1,22 +1,39 @@
-<p>
-  <strong>Name:</strong>
-  <%= @cocktail.name %>
-</p>
+<div class="container margin">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+      <div class="card-lg" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=cl_image_path @cocktail.photo, width: 1000, height: 400, crop: :fill %>');">
+        <div class="card-category">Popular</div>
+        <div class="card-description">
+          <h1><%= @cocktail.name %></h1>
+        </div>
+        <%= link_to edit_cocktail_path(@cocktail), class: 'card-user white' do %> <i class="fa fa-edit"></i> Edit cocktail <% end %>
+      </div>
+    </div>
+  </div>
 
-<ul>
-<% @cocktail.doses.each do |dose| %>
-  <li><%=dose.ingredient.name %> | <%=dose.description %> | <%= link_to cocktail_dose_path(@cocktail, dose), method: :delete do %> <i class="fa fa-trash"></i> <% end %>
-</li>
-<% end %>
-</ul>
+  <div class="page-header">
+  <h3 id="top">How to make it?</h3>
+  </div>
 
-<p>
-  <strong>
-  <%= link_to 'Add dose', new_cocktail_dose_path(@cocktail) %>
-  </strong>
-</p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <% base_url = 'http://www.thecocktaildb.com/api/json/v1/1/search.php?s=' %>
+      <% url = base_url+@cocktail.name %>
+      <% result = JSON.parse(open(url).read) %>
+      <%= p result.first[1][0]['strInstructions'] %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="ingredients-flex">
+      <% @cocktail.doses.each do |dose| %>
+        <div class="ingredient-flex text-center"><%= cl_image_tag dose.ingredient.photo, height: 100, width: 100, crop: :fill %><br><%=dose.description %> <%=dose.ingredient.name %> <br><%= link_to cocktail_dose_path(@cocktail, dose), method: :delete do %> <i class="fa fa-trash"></i> <% end %></div>
+      <% end %>
+      </div>
+    <div class="text-center"><br><%= link_to new_cocktail_dose_path(@cocktail), class: 'btn btn-default' do %> <i class="fa fa-flask"></i> Add a dose <% end %></div>
+    </div>
+  </div>
+<!--   <p>
+    <%= link_to new_cocktail_dose_path(@cocktail), class: 'btn btn-default pull-right' do %> <i class="fa fa-flask"></i> Add a dose <% end %>
+  </p> -->
+</div>
 
 
-
-<%= link_to 'Edit', edit_cocktail_path(@cocktail) %> |
-<%= link_to 'Back', cocktails_path %>

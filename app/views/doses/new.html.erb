@@ -1,5 +1,10 @@
-<h1>New Dose</h1>
-
-<%= render 'form', cocktail: @cocktail, ingredients: @ingredients, dose: @dose %>
-
-<%= link_to 'Back', cocktail_doses_path %>
+<div class="container margin">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <h3>Add a dose in <%= @cocktail.name %> recipe</h3>
+    <br>
+    <%= render 'form', cocktail: @cocktail, ingredients: @ingredients, dose: @dose %>
+    <%= link_to 'Back', @cocktail, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>

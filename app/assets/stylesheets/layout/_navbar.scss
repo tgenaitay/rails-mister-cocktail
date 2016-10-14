@@ -20,8 +20,9 @@
 }
 
 /* Navbar logo */
-.navbar-wagon-brand img {
-  width: 50px;
+.navbar-wagon-brand {
+  color:black;
+  text-decoration:none;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -128,4 +129,8 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.margin {
+  margin-top:120px
 }

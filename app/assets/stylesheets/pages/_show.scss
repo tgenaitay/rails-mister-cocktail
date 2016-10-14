@@ -1,0 +1,16 @@
+.ingredients-flex {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.ingredient-flex {
+
+  flex: 0 0 auto;
+  width: 25%;
+
+}
+

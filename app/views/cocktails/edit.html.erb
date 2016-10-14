@@ -1,6 +1,15 @@
-<h1>Editing Cocktail</h1>
-
-<%= render 'form', cocktail: @cocktail %>
-
-<%= link_to 'Show', @cocktail %> |
-<%= link_to 'Back', cocktails_path %>
+<div class="container margin">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="card-lg" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=cl_image_path @cocktail.photo, width: 1000, height: 400, crop: :fill %>');">
+        <div class="card-description">
+          <h1>Edit <%= @cocktail.name %></h1>
+        </div>
+        <%= link_to @cocktail, class: 'card-user white' do %> <i class="fa fa-search"></i> View cocktail <% end %>
+      </div>
+    <br>
+    <%= render 'form', cocktail: @cocktail %>
+    <%= link_to 'Back', cocktails_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>

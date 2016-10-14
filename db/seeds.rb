@@ -10,17 +10,21 @@ require 'open-uri'
 require 'json'
 
 url = 'http://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
-
 result = JSON.parse(open(url).read)
+
+Dose.delete_all
+Ingredient.delete_all
 
 result["drinks"].each do |ingredient|
   ingredient_name = ingredient["strIngredient1"]
-  Ingredient.create(name: ingredient_name)
+  ingredient_picture = "http://www.thecocktaildb.com/images/ingredients/#{ingredient_name}-Small.png"
+  Ingredient.create!(name: ingredient_name, remote_photo_url: ingredient_picture)
 end
 
-clean = Ingredient.find_by name: '151 proof rum'
-clean.delete
+# clean up
 
-clean = Ingredient.find_by name: '7-Up'
-clean.delete
+clean1 = Ingredient.find_by name: '151 proof rum'
+clean1.delete
+clean2 = Ingredient.find_by name: '7-Up'
+clean2.delete
 

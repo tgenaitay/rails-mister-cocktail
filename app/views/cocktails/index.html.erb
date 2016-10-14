@@ -1,29 +1,28 @@
 <%= render partial: "shared/header" %>
 <div class="container">
-<div class="page-header">
-<h2 id="top">Best recipes selected by Mister cocktail</h2>
-</div>
+  <div class="page-header">
+  <h2 id="top">Best recipes selected by Mister cocktail</h2>
+  </div>
 <br>
 <div class="row">
   <% @cocktails.each do |cocktail| %>
+</ul>
   <div class="col-xs-12 col-sm-4">
-    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path 'background.jpg' %>);">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('<%=cl_image_path cocktail.photo, width: 400, height: 200, crop: :fill %>');">
       <div class="card-category">Popular</div>
       <div class="card-description">
         <h2><%= cocktail.name %></h2>
-        <p>List of ingredients here</p>
+        <p><% cocktail.doses.each do |dose| %><%=dose.ingredient.name %> <% end %></p>
       </div>
+    <%= link_to edit_cocktail_path(cocktail), class: 'card-link2 white' do %> <i class="fa fa-edit"></i> <% end %>
+    <%= link_to cocktail, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link1 white' do %> <i class="fa fa-trash"></i> <% end %>
       <%= link_to cocktail, class: "card-link" do %>link<% end %>
     </div>
-    <%= link_to edit_cocktail_path(cocktail) do %> <i class="fa fa-edit"></i> <% end %>
-    <%= link_to cocktail, method: :delete, data: { confirm: 'Are you sure?' } do %> <i class="fa fa-trash"></i> <% end %>
+
   </div>
   <% end %>
 </div>
 <br>
-<div class="row">
-<div class="col-xs-12 col-sm-12">
-<%= link_to 'New Cocktail', new_cocktail_path, class: 'btn btn-primary' %>
-</div>
+
 </div>
 </div>

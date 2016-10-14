@@ -5,10 +5,35 @@
   color: white;
   position: relative;
 }
+
+.card-lg {
+  height: 280px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
+}
+
 .card-user {
   position: absolute;
   right: 10px;
   top: 10px;
+}
+.card-link1 {
+  position: absolute;
+  right: 10px;
+  top: 9px;
+  z-index:999;
+}
+.card-link2 {
+  position: absolute;
+  right: 35px;
+  top: 10px;
+  z-index:999;
+}
+.white {
+  color:white;
+  font-size:15px;
 }
 .card-category {
   position: absolute;
