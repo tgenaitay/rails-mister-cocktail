@@ -5,7 +5,7 @@ class Cocktail < ApplicationRecord
   validates :photo, presence: true
   mount_uploader :photo, PhotoUploader
 
-  after_create :update_description
+  before_validation :update_description
 
 
 
@@ -14,7 +14,8 @@ class Cocktail < ApplicationRecord
   def update_description
       url = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s=#{self.name}"
       result = JSON.parse(open(url).read)
-      self.update(description: result.first[1][0]['strInstructions'])
+      data = result.first[1][0]['strInstructions']
+      self.description = data
   end
 
 
