@@ -23,8 +23,8 @@ end
 
 # clean up
 
-clean1 = Ingredient.find_by name: '151 proof rum'
-clean1.delete
-clean2 = Ingredient.find_by name: '7-Up'
-clean2.delete
+# clean1 = Ingredient.find_by name: '151 proof rum'
+# clean1.delete
+# clean2 = Ingredient.find_by name: '7-Up'
+# clean2.delete
 
