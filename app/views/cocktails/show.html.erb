@@ -17,10 +17,7 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <% base_url = 'http://www.thecocktaildb.com/api/json/v1/1/search.php?s=' %>
-      <% url = base_url+@cocktail.name %>
-      <% result = JSON.parse(open(url).read) %>
-      <%= p result.first[1][0]['strInstructions'] %>
+      <%= @cocktail.description %>
     </div>
     <div class="col-xs-12 col-sm-6">
       <div class="ingredients-flex">
